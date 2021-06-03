@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        body {
+            margin: 0; 
+            padding: 0; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        #frame {
+            width: 600px; 
+            height: 650px; 
+            display: flex; 
+            border: solid 1px black; 
+            justify-content: center;
+            align-items: center; 
+            /* background: green; */
+            position: relative;
+        }
+
+        #frame::before {
+            content: "棋盤裡，車無輪，馬無疆，叫聲將軍提防提防";
+            writing-mode: tb-rl;
+            font-size: 34px;
+            font-family: DFKai-sb;
+            /* background: red; */
+            position: absolute;
+            left: -70px;
+            top: -15px;
+            height: 680px;
+        }
+
+        #frame::after {
+            content: "圖畫裡，龍不吟，虎不嘯，小小書僮可笑可笑"; 
+            writing-mode: tb-rl;
+            font-size: 34px;
+            font-family: DFKai-sb;
+            /* background: red; */
+            position: absolute;
+            right: -70px; 
+            top: -15px;
+            height: 680px;
+        }
+
+        #table1 { 
+            width: 80%; 
+            height: 85%; 
+            border-collapse: collapse;
+        }
+
+        #table1 td {
+            /* width: 60px;  */
+            /* height: 60px;  */
+            /* 
+            在這邊訂定方格長寬的原因是因為中間的楚河漢界字體大小會影響他的外邊方匡大小，
+            在這邊訂定方格長寬後，方匡大小就不會跑掉了，但我覺得這不是個聰明的方法..  
+             */
+            /* 有其他方法什麼其他方法可以不讓字體大小影響到外邊方匡大小 */
+            width: 12.5%; 
+            height: 11.1111%; 
+            border: solid 1px black; 
+        }
+
+        #river {
+            display: flex; 
+            justify-content: space-around;
+            font-size: 2rem; 
+            /* 標楷體怎麼設定不出來 */
+            /* font-family: DFKai-sb; */
+            /* font-family: 標楷體; */
+        }
+
+        #table2 {
+            width: 90%; 
+            height: 95%; 
+            border-collapse: collapse;
+            position: absolute;
+        }
+
+        #table2 td { 
+            width: 45px; 
+            height: 45px; 
+            border: 0;
+        }
+
+        .circle {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: solid 1px black;
+            border-radius: 50%;
+            line-height: 45px;
+            font-size: 30px;
+        }
+
+        .forceBlack {
+            color: black; 
+        }
+
+        .forceRed {
+            color: red; 
+        }
+
+        .line1 {
+            background-image: linear-gradient(46deg, white 49%, black, white 51%);
+        }
+
+        .line2 {
+            background-image: linear-gradient(-46deg, white 49%, black, white 51%);
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <table id="table1">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="line1"></td>
+                <td class="line2"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="line2"></td>
+                <td class="line1"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <!-- 為什麼這邊這樣爆掉了 -->
+                <!-- <td colspan="8" style="display: flex;">
+                    <div>楚河</div>
+                    <div>漢界</div>
+                </td> -->
+                <td colspan="8">
+                    <div id="river">
+                        <!-- <div style="font-family: DFKai-sb;">楚河</div> -->
+                        <!-- <div style="font-family: 標楷體;">楚河</div> -->
+                        <div>楚河</div>
+                        <div>漢界</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="line1"></td>
+                <td class="line2"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="line2"></td>
+                <td class="line1"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <table id="table2">
+            <tr>
+                <td align="center"><div class="circle forceBlack">車</div></td>
+                <td align="center"><div class="circle forceBlack">馬</div></td>
+                <td align="center"><div class="circle forceBlack">象</div></td>
+                <td align="center"><div class="circle forceBlack">士</div></td>
+                <td align="center"><div class="circle forceBlack">將</div></td>
+                <td align="center"><div class="circle forceBlack">士</div></td>
+                <td align="center"><div class="circle forceBlack">象</div></td>
+                <td align="center"><div class="circle forceBlack">馬</div></td>
+                <td align="center"><div class="circle forceBlack">車</div></td>
+            </tr>
+            <tr>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+            </tr>
+            <tr>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceBlack">包</div></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceBlack">包</div></td>
+                <td align="center"></td>
+            </tr>
+            <tr>
+                <td align="center"><div class="circle forceBlack">卒</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceBlack">卒</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceBlack">卒</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceBlack">卒</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceBlack">卒</div></td>
+            </tr>
+            <tr>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+            </tr>
+            <tr>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+            </tr>
+            <tr>
+                <td align="center"><div class="circle forceRed">兵</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceRed">兵</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceRed">兵</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceRed">兵</div></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceRed">兵</div></td>
+            </tr>
+            <tr>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceRed">炮</div></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"><div class="circle forceRed">炮</div></td>
+                <td align="center"></td>
+            </tr>
+            <tr>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+            </tr>
+            <tr>
+                <td align="center"><div class="circle forceRed">俥</div></td>
+                <td align="center"><div class="circle forceRed">傌</div></td>
+                <td align="center"><div class="circle forceRed">相</div></td>
+                <td align="center"><div class="circle forceRed">仕</div></td>
+                <td align="center"><div class="circle forceRed">帥</div></td>
+                <td align="center"><div class="circle forceRed">仕</div></td>
+                <td align="center"><div class="circle forceRed">相</div></td>
+                <td align="center"><div class="circle forceRed">傌</div></td>
+                <td align="center"><div class="circle forceRed">俥</div></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
